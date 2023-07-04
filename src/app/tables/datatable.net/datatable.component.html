@@ -1,0 +1,140 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <!-- <form [formGroup]="type" class="form-horizontal"> -->
+                        <div class="card-header card-header-rose card-header-text">
+                            <div class="card-text">
+                              <h4 class="card-title">Viaje</h4>
+                            </div>
+                        </div> 
+                        <div class="card-body">
+                            <form [formGroup]="form" class="mb-8">
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Origen</label>
+                                      <div class="col-sm-7">
+                                          <input type="text" onkeyup="this.value=this.value.toUpperCase()"
+                                          id="origin"
+                                          formControlName="origin"
+                                          placeholder="Origin"
+                                          (blur)="validateInfo('VALIDATE_ORIGIN',dataTableSearch.origin)"
+                                          [(ngModel)]="dataTableSearch.origin"
+                                          maxlength="3"
+                                          required
+                                          >
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-2 col-form-label">Destino</label>
+                                      <div class="col-sm-7">
+                                          <input 
+                                          type="text" 
+                                          onkeyup="this.value=this.value.toUpperCase()"
+                                          id="destination"
+                                          formControlName="destination"
+                                          placeholder="Destination"
+                                          (blur)="validateInfo('VALIDATE_DESTINO',dataTableSearch.destination)"
+                                          [(ngModel)]="dataTableSearch.destination"
+                                          maxlength="3"
+                                          required
+                                          >
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-2 col-form-label">Cantidad Maxima</label>
+                                      <div class="col-sm-7">
+                                          <input type="number"
+                                          id="numeroMaxVuelos"
+                                          formControlName="numeroMaxVuelos"
+                                          placeholder="Cantidad Maxima"
+                                          [(ngModel)]="dataTableSearch.numeroMaxVuelos"
+                                          maxlength="10"                                          
+                                          >
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-2 col-form-label">Moneda</label>
+                                    <div class="col-sm-7">
+                                        <select 
+                                        formControlName="moneda" 
+                                        id="moneda" 
+                                        class="shadow  text-xs appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        [(ngModel)]="dataTableSearch.moneda"
+                                        >
+                                            <option value="USD" selected>USD</option>
+                                            <option value="EUR">EURO</option>
+                                            <option value="COP">PESOS COLOMBIANOS</option>
+                                          </select>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-2 col-form-label">Precio Viaje</label>
+                                      <div class="col-sm-7">
+                                          <input type="text"
+                                          id="precio"
+                                          formControlName="precio"
+                                          placeholder="Precio Viaje"
+                                          [(ngModel)]="dataTableSearch.precio"
+                                          readonly
+                                          >
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <button mat-raised-button class="btn btn-danger" (click)="loadGridJourneySearch()">Buscar</button>
+                                  </div>
+                            </form>
+                        </div>                       
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">library_books</i>
+                        </div>
+                        <h4 class="card-title">Journey</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            <a style="cursor: pointer" (click)="exportexcel()">
+                                <mat-icon> cloud_download</mat-icon>
+                            </a>
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatablesNew" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                  <tr>
+                                    <th>Origen</th>
+                                    <th>Destino</th>
+                                    <th>Precio</th>
+                                    <th>Aerolinea</th>
+                                    <th>Numero Vuelo</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let row of dataTable.dataRows">
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{dataTableSearch.moneda}} {{row[2]*dataTableSearch.factorConversion}}</td>
+                                    <td>{{row[3].flightCarrier}}</td>
+                                    <td>{{row[3].flightNumber}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>

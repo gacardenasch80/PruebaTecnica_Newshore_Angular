@@ -1,0 +1,87 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">library_books</i>
+                        </div>
+                        <p class="card-category">Journey</p>
+                        <h3 class="card-title">{{books}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">library_books</i><a href="#/tables/datatables.net">Ver Journey </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <p class="card-category">Autores</p>
+                        <h3 class="card-title">{{author}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">person</i>
+                        </div>
+                        <p class="card-category">Usuarios</p>
+                        <h3 class="card-title">{{users}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">sync</i>
+                        </div>
+                        <p class="card-category">Sincronizar</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i><a href="#" (click)="onClickSync()">Sincronizar</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- small modal -->
+            <div class="modal fade modal-mini modal-primary" id="syncModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display': modalIsOpen ? 'block' : 'none', 'opacity': 1}">
+                <div class="modal-dialog modal-small">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button mat-button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="closeModal()"><i class="material-icons">clear</i></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Se ha culminado el proceso de sincronización</p>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button mat-raised-button type="button" class="btn btn-link" data-dismiss="modal" (click)="closeModal()">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--    end small modal -->
+
+        </div>
+    </div>
+</div>
